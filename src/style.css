@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-green: #16a34a;
+  --secondary-green: #22c55e;
+  --gradient-start: #dcfce7;
+  --gradient-end: #bbf7d0;
+}
+
+/* Responsive Container */
+.container {
+  @apply px-4 mx-auto;
+  max-width: 100%;
+  
+  @screen sm {
+    max-width: 640px;
+  }
+  @screen md {
+    max-width: 768px;
+  }
+  @screen lg {
+    max-width: 1024px;
+  }
+  @screen xl {
+    max-width: 1280px;
+  }
+}
+
+/* Responsive Typography */
+h1 {
+  @apply text-3xl md:text-4xl lg:text-5xl;
+}
+
+h2 {
+  @apply text-2xl md:text-3xl lg:text-4xl;
+}
+
+/* Glass Effect */
+.glass-effect {
+  @apply bg-white/80 dark:bg-dark-card/80 backdrop-blur-lg;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Enhanced card styling */
+.eco-card {
+  @apply glass-effect rounded-xl shadow-lg hover:shadow-xl 
+    transition-all duration-500 relative overflow-hidden
+    p-4 sm:p-6 md:p-8;
+  transform: perspective(1000px) rotateX(0deg);
+}
+
+.eco-card::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-br from-eco-50/10 to-transparent opacity-0 transition-opacity duration-300;
+}
+
+.eco-card:hover {
+  transform: perspective(1000px) rotateX(2deg) translateY(-5px);
+}
+
+.eco-card:hover::before {
+  @apply opacity-100;
+}
+
+/* Enhanced button styling */
+.eco-button {
+  @apply relative overflow-hidden bg-eco-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg
+    transition-all duration-300 transform hover:scale-[1.02]
+    dark:bg-eco-500 dark:hover:bg-eco-600
+    text-sm sm:text-base;
+  background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
+  background-size: 200% 200%;
+}
+
+.eco-button:hover {
+  background-position: right center;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+}
+
+/* Responsive Grid Layouts */
+.responsive-grid {
+  @apply grid gap-4 sm:gap-6 md:gap-8;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Responsive Padding & Margins */
+.section-padding {
+  @apply py-8 sm:py-12 md:py-16 lg:py-20;
+}
+
+.section-margin {
+  @apply my-8 sm:my-12 md:my-16 lg:my-20;
+}
+
+/* Nature-inspired scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-dark-hover;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-eco-500 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-eco-600;
+}
+
+/* Dark mode styles */
+.dark {
+  --gradient-start: #0f172a;
+  --gradient-end: #1e293b;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Page transitions */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  @apply fixed inset-0 bg-white dark:bg-dark-bg z-50 transform transition-transform duration-300;
+}
+
+.mobile-nav.open {
+  @apply translate-x-0;
+}
+
+.mobile-nav.closed {
+  @apply translate-x-full;
+}
+
+/* Responsive Images */
+.responsive-image {
+  @apply w-full h-auto object-cover rounded-lg;
+  aspect-ratio: 16/9;
+}
+
+/* Responsive Tables */
+.responsive-table {
+  @apply w-full overflow-x-auto;
+}
+
+/* Mobile-first Modal */
+.modal-content {
+  @apply w-full mx-4 sm:mx-auto sm:max-w-lg md:max-w-xl lg:max-w-2xl
+    bg-white dark:bg-dark-card rounded-xl shadow-xl
+    transform transition-all duration-300;
+}
+
+/* Responsive Forms */
+.form-input {
+  @apply w-full px-3 py-2 sm:py-3 rounded-lg border border-gray-300
+    focus:border-eco-500 focus:ring-2 focus:ring-eco-200
+    dark:bg-dark-hover dark:border-dark-hover
+    text-sm sm:text-base;
+}
+
+/* Responsive Icons */
+.icon {
+  @apply w-5 h-5 sm:w-6 sm:h-6;
+}
+
+/* Responsive Spacing */
+.content-spacing > * + * {
+  @apply mt-4 sm:mt-6 md:mt-8;
+}
