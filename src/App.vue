@@ -1,27 +1,17 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
-import { useDark, useToggle } from '@vueuse/core';
 import NavBar from './components/NavBar.vue';
 import Footer from './components/Footer.vue';
 import BackgroundPattern from './components/BackgroundPattern.vue';
-
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
 </script>
 
 <template>
-  <div 
-    class="min-h-screen flex flex-col transition-colors duration-300"
-    :class="{ 
-      'bg-gray-50 text-gray-900': !isDark,
-      'bg-dark-bg text-dark-text': isDark 
-    }"
-  >
+  <div class="min-h-screen flex flex-col relative bg-gradient-to-br from-gray-50 to-white text-gray-900">
     <BackgroundPattern />
-    <NavBar :isDark="isDark" @toggle-theme="toggleDark()" />
+    <NavBar />
     <main class="container mx-auto px-4 py-8 flex-grow relative z-10">
       <RouterView />
     </main>
-    <Footer :isDark="isDark" />
+    <Footer />
   </div>
 </template>

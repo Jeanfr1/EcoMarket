@@ -39,7 +39,7 @@ onMounted(() => {
 const hexagonPatternStyle = computed(() => {
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
-      <path d="M30 5L55 20V40L30 55L5 40V20L30 5Z" fill="none" stroke="#16a34a" stroke-width="1" opacity="0.4"/>
+      <path d="M30 5L55 20V40L30 55L5 40V20L30 5Z" fill="none" stroke="#16a34a" stroke-width="1.5" opacity="0.6"/>
     </svg>
   `.trim();
 
@@ -50,7 +50,7 @@ const hexagonPatternStyle = computed(() => {
   return {
     backgroundImage: `url("data:image/svg+xml,${encodedSvg}")`,
     backgroundSize: '60px 60px',
-    opacity: '0.15'
+    opacity: '0.25'
   };
 });
 </script>
@@ -58,7 +58,7 @@ const hexagonPatternStyle = computed(() => {
 <template>
   <div ref="patternRef" class="fixed inset-0 pointer-events-none overflow-hidden">
     <!-- Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-br from-eco-50/30 to-eco-100/20"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-eco-50/50 to-eco-100/30"></div>
     
     <!-- Animated Leaves -->
     <div
@@ -70,7 +70,7 @@ const hexagonPatternStyle = computed(() => {
         left: `${leaf.x}%`,
         top: `${leaf.y}%`,
         transform: `rotate(${leaf.rotation}deg) scale(${leaf.scale})`,
-        opacity: '0.15'
+        opacity: '0.25'
       }"
     >
       {{ leaf.emoji }}
